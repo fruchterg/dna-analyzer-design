@@ -10,9 +10,9 @@
 #include "dnasequence.h"
 class Dna {
 public:
-    Dna(const std::string&  name, const std::string&  status, const std::string& dnasequence);
+    Dna(const std::string&  name, const std::string&  status, const Dnasequence& dnasequence);
     static size_t getId();
-     std::string getName()const;
+     std::string getName();
     inline Dnasequence getDna();
 
 private:
@@ -26,7 +26,7 @@ inline size_t Dna::getId()
 {
     return m_id;
 }
-inline std::string Dna::getName()const
+inline std::string Dna::getName()
 {
     return m_name;
 }
