@@ -19,8 +19,9 @@ void System::start()
 
        Paramcommand parameter(reader.read());
        Icommand *command = Managecommand::createcommand(parameter);
-
-       writer.write(command->run(parameter));
+        std::string a =  command->run(parameter);
+        //std::cout<<a;
+       writer.write(a);
 
     }
 }
