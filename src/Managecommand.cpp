@@ -3,11 +3,22 @@
 //
 
 #include "Managecommand.h"
-
+#include <string.h>
 Icommand* Managecommand::createcommand(const Paramcommand& param)
 {
 
-    Icommand* command = new New(param);
-        return command;
+        if(param.getParam()[0]=="new")
+        {
+            Icommand* command = new New(param);
+            return command;
 
+        }
+
+        else if(param.getParam()[0]=="load")
+        {
+            Icommand* command = new Load(param);
+            return command;
+        }
+
+        return  NULL;
 }
