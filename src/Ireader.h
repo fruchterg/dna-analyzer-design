@@ -23,10 +23,7 @@ protected:
 
 class Filereader:public Datareader{
 
-public:
-    Filereader(const char* name_file);
 
-    std::string read()const;
 
 };
 
@@ -41,4 +38,6 @@ public:
 
 
 };
+
+
 #endif //DNA_IREADER_H
