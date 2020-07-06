@@ -23,7 +23,7 @@ bool New::isValid(const Paramcommand& param)
 }
 
 
-const char* New::run(const Paramcommand& param)
+std::string New::run(const Paramcommand& param)
 {
     static size_t countId=1;
     std::stringstream temp;
@@ -40,16 +40,15 @@ const char* New::run(const Paramcommand& param)
     {
         dnaName = param.getParam()[2];
     }
-
-    Dna* d = new Dna(dnaName, (std::string) "new",param.getParam()[1]);
-    dataDNA::getIdDNA().insert(std::pair<size_t, Dna *>(Dna::getId() ,d));
-    dataDNA::getNameDNA().insert(std::pair<std::string, size_t>(dnaName, Dna::getId()-1));
+    Dna* d = new Dna(dnaName, "new",param.getParam()[1]);
+    dataDNA::getIdDNA().insert(std::pair<size_t, Dna*>(Dna::getId(),d));
+    dataDNA::getNameDNA().insert(std::pair<std::string, size_t>(dnaName, Dna::getId()));
 
     std::stringstream temp1;
-    temp1<<Dna::getId();
+    temp1<<dataDNA::getIdDNA()[Dna::getId()]->getId();
     std::string strId1 =temp1.str();
-
-    std::string str = "["+strId1+"]"+ d->getName()+":"+ param.getParam()[1];
-    return str.c_str();
-
+    std::string g = dataDNA::getIdDNA()[Dna::getId()]->getName();
+    std::string f = dataDNA::getIdDNA()[Dna::getId()]->getDna().getAsChar();
+    std::string s = "[" +strId1+ "]"+ g+":"+f;
+    return s;
 }
