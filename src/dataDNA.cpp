@@ -14,8 +14,3 @@ std::map<size_t ,Dna*> dataDNA::getIdDNA()
     return  m_mName;
 }
 
-/*std::map<StatusDna,Dna&> dataDNA::getStatusDNA()
-{
-    static std::map<StatusDna,Dna&> m_mStatus;
-    return m_mStatus;
-}*/

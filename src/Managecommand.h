@@ -5,10 +5,14 @@
 #ifndef DNDSEQUENCE_MANAGECOMMAND_H
 #define DNDSEQUENCE_MANAGECOMMAND_H
 
+#include "Icommand.h"
 
-class Managecommand {
+class Managecommand{
 
+public:
+     static Icommand* createcommand(const Paramcommand& param);
 };
+
 
 
 #endif //DNDSEQUENCE_MANAGECOMMAND_H

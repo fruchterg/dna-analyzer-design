@@ -18,6 +18,8 @@ void Filewriter::write(const char* data)const{
     myfile << data;
     myfile.close();
 }
+
+
 void Consolewriter::write( const char* data)const
 {
     std::cout<<data<<std::endl;

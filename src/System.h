@@ -8,6 +8,9 @@
 
 class System {
 
+public:
+    void start();
+
 };
 
 

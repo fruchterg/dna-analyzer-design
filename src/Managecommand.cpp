@@ -3,3 +3,11 @@
 //
 
 #include "Managecommand.h"
+
+Icommand* Managecommand::createcommand(const Paramcommand& param)
+{
+
+    Icommand* command = new New(param);
+        return command;
+
+}

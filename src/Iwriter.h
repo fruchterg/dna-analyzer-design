@@ -8,16 +8,23 @@
 #include <iostream>
 
 class Iwriter{
+
 public:
   virtual void write(const char* data)const=0;
 
 };
+
+
 class Datawriter:public Iwriter{
+
 protected:
     std::string m_data;
 
 };
+
+
 class Filewriter:public Datawriter{
+
 public:
     Filewriter(std::string data);
     void write(const char* data)const;
@@ -26,6 +33,7 @@ public:
 };
 
 class Consolewriter:public Datawriter{
+
 public:
     void write(const char* data)const;
 

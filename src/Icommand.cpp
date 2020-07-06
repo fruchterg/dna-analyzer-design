@@ -6,7 +6,7 @@
 #include <sstream>
 #include "Icommand.h"
 #include "dataDNA.h"
-#include <sstream>
+
 
 New::New(const Paramcommand& paramlist)
 {

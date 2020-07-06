@@ -3,3 +3,24 @@
 //
 
 #include "System.h"
+#include "Iwriter.h"
+#include "Ireader.h"
+#include "Paramcommand.h"
+#include "Managecommand.h"
+void System::start()
+{
+
+    while (1){
+
+
+       Consolereader reader;
+
+       Consolewriter writer;
+
+       Paramcommand parameter(reader.read());
+       Icommand *command = Managecommand::createcommand(parameter);
+
+       writer.write(command->run(parameter));
+
+    }
+}
