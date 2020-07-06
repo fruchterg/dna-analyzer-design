@@ -13,9 +13,9 @@
 class dataDNA {
 
 public:
-    static std::map<IdDna,Dna> getIdDNA();
-    static std::map<NameDna ,Dna&> getNameDNA();
-    static std::map<StatusDna,Dna> getStatusDNA();
+    static std::map<size_t ,Dna*> getIdDNA();
+    static std::map<std::string ,size_t> getNameDNA();
+    //static std::map<StatusDna, Dna &> getStatusDNA();
 
 
 };

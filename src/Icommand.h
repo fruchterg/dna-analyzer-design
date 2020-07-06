@@ -11,14 +11,11 @@
 
 class Icommand{
 public:
-    std::string virtual run() = 0;
-private:
-    dataDNA* m_datadna;
+     virtual const char* run(const Paramcommand& obj) = 0;
 
 };
 
 class Icreate:public Icommand{
-public:
 
 };
 
@@ -28,7 +25,6 @@ public:
     const char* run(const Paramcommand& obj);
 
 private:
-   static size_t m_id;
    bool isValid(const Paramcommand& obj);
 };
 

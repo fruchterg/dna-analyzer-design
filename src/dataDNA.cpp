@@ -3,18 +3,19 @@
 //
 
 #include "dataDNA.h"
-static std::map<IdDna,Dna> getIdDNA()
+std::map<size_t ,Dna*> dataDNA::getIdDNA()
 {
-    static std::map<IdDna,Dna> m_mId;
+    static std::map<size_t ,Dna*> m_mId;
     return m_mId;
 }
-static std::map<NameDna ,Dna&> getNameDNA()
+ std::map<std::string ,size_t> dataDNA::getNameDNA()
 {
-    static std::map<NameDna,Dna&> m_mName;
+    static std::map<std::string,size_t> m_mName;
     return  m_mName;
 }
-static std::map<StatusDna,Dna&> getStatusDNA()
+
+/*std::map<StatusDna,Dna&> dataDNA::getStatusDNA()
 {
     static std::map<StatusDna,Dna&> m_mStatus;
     return m_mStatus;
-}
+}*/
