@@ -10,7 +10,7 @@
 class Iwriter{
 
 public:
-  virtual void write(const char* data)const=0;
+  virtual void write(std::string data)const=0;
 
 };
 
@@ -27,7 +27,7 @@ class Filewriter:public Datawriter{
 
 public:
     Filewriter(std::string data);
-    void write(const char* data)const;
+    void write(std::string data)const;
 
 
 };
@@ -35,7 +35,7 @@ public:
 class Consolewriter:public Datawriter{
 
 public:
-    void write(const char* data)const;
+    void write(std::string data)const;
 
 
 };
