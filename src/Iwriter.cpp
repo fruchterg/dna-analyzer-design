@@ -12,7 +12,7 @@ Filewriter::Filewriter(std::string data)
 }
 
 
-void Filewriter::write(const char* data)const{
+void Filewriter::write(std::string data)const{
     std::ofstream myfile;
     myfile.open(m_data.c_str());
     myfile << data;
@@ -20,7 +20,7 @@ void Filewriter::write(const char* data)const{
 }
 
 
-void Consolewriter::write( const char* data)const
+void Consolewriter::write( std::string data)const
 {
     std::cout<<data<<std::endl;
 }
