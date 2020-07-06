@@ -6,7 +6,7 @@
 #define DNDSEQUENCE_MANAGECOMMAND_H
 
 #include "Icommand.h"
-
+#include "Load.h"
 class Managecommand{
 
 public:
