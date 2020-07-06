@@ -78,10 +78,9 @@ const char* Dnasequence::getAsChar()const{
 }
 
 
-
 void  Dnasequence::init(const char* cString)
 {
-    unsigned int i;
+    size_t i;
     m_cstringDna =new Nucleotied[m_lenCstringDna+1];
     for(i=0;i<m_lenCstringDna;i++)
     {
