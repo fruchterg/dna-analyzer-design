@@ -11,7 +11,7 @@
 
 class Icommand{
 public:
-     virtual const char* run(const Paramcommand& obj) = 0;
+     virtual std::string run(const Paramcommand& obj) = 0;
 
 };
 
@@ -23,7 +23,7 @@ class New:public Icreate{
 
 public:
     New(const Paramcommand& obj);
-    const char* run(const Paramcommand& obj);
+    std::string run(const Paramcommand& obj);
 
 private:
    bool isValid(const Paramcommand& obj);
