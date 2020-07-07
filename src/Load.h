@@ -13,12 +13,12 @@ class Load:public Icreate {
 public:
 
     Load(const Paramcommand& param);
-    std::string run(const Paramcommand&param);
+    void run(const Iwriter& writer,dataDNA& containerDna,const Paramcommand& obj);
 
 private:
 
     bool isValid(const Paramcommand& obj);
-    std::string print()const;
+    void print(const Iwriter& writer, dataDNA& containerDna)const;
 
 };
 
