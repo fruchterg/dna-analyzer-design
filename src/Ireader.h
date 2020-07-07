@@ -8,7 +8,7 @@
 
 class Ireader{
 public:
-    virtual std::string read()const=0 ;
+    virtual void read()const=0 ;
 
 
 };
@@ -18,6 +18,7 @@ class Datareader:public Ireader{
 
 protected:
      std::string m_data;
+     std::string m_nameFile;
 };
 
 
@@ -31,9 +32,8 @@ class Consolereader:public Datareader{
 
 public:
 
-    Consolereader();
-
-    std::string read()const;
+    std::string get()const;
+    void read();
 
 
 
