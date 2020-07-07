@@ -6,10 +6,13 @@
 #define DNDSEQUENCE_SYSTEM_H
 
 
+#include "Iwriter.h"
+#include "Ireader.h"
+
 class System {
 
 public:
-    void start();
+    void start(const Iwriter& writer, Ireader& reader);
 
 };
 
