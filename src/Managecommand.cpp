@@ -3,8 +3,7 @@
 //
 
 #include "Managecommand.h"
-#include "Dup.h"
-#include <string.h>
+//#include <string.h>
 Icommand* Managecommand::createcommand(const Paramcommand& param)
 {
 
@@ -21,6 +20,11 @@ Icommand* Managecommand::createcommand(const Paramcommand& param)
         else if(param.getParam()[0]=="dup")
         {
             Icommand* command = new Dup(param);
+            return command;
+        }
+        else if(param.getParam()[0]=="save")
+        {
+            Icommand* command = new Save(param);
             return command;
         }
         return  NULL;
