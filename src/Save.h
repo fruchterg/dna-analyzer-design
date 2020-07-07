@@ -5,9 +5,9 @@
 #ifndef DNDSEQUENCE_SAVE_H
 #define DNDSEQUENCE_SAVE_H
 
-#include "Icommand.h"
+#include "ImanageDna.h"
 
-class Save: public Icommand{
+class Save: public ImanageDna{
 
 public:
     Save(const Paramcommand& obj);
