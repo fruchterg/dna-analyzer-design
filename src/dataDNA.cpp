@@ -27,6 +27,10 @@ std::map<size_t ,Dna*>& dataDNA::getMap()
     return m_mapIdDna;
 }
 
+Dna*dataDNA::find(size_t id)
+{
+    return m_mapIdDna[id];
+}
 
 
 
