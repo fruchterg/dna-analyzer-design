@@ -7,18 +7,13 @@
 #include "Ireader.h"
 
 
-
-
-
-Consolereader::Consolereader()
-{
-
-    std::cout<<"> cmd >>>"<<std::endl;
-    std::getline(std::cin, m_data,'\n');
-
-
-}
-std::string Consolereader::read()const
+std::string Consolereader::get()const
 {
     return  m_data;
+}
+
+void Consolereader::read()
+{
+    std::cout<<"> cmd >>>"<<std::endl;
+    std::getline(std::cin, m_data,'\n');
 }
