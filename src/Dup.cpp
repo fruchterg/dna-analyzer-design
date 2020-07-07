@@ -21,22 +21,21 @@ bool Dup::isValid(const Paramcommand& obj)
 void Dup::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& param)
 {
     static size_t countId=1;
-    std::stringstream temp;
     std::string dnaName;
+    std::stringstream temp2;
 
     std::string string = param.getParam()[1].substr(1);
-    std::stringstream temp2(string);
+    std::stringstream temp1(string);
     size_t idDna;
-    temp2>> idDna;
+    temp1>> idDna;
 
     if(param.getParam().size()<3)
     {
-        temp<<"_"<<countId++;
-        dnaName =containerDna.find(idDna)->getName()+temp.str();
+        temp2<<countId++;
+        dnaName =containerDna.find(idDna)->getName()+"_"+temp2.str();
 
     }
     else
-
     {
         dnaName = param.getParam()[2];
     }
