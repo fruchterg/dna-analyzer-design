@@ -14,6 +14,7 @@ class dataDNA {
 public:
     void addDna( Dna* newDna);
      std::map<size_t ,Dna*>& getMap();
+     Dna*find(size_t);
 private:
      std::map<size_t ,Dna*> m_mapIdDna;
      std::map<std::string ,size_t> m_mapNameDna;
