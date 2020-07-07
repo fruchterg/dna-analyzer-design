@@ -8,17 +8,18 @@
 
 #include <string>
 #include "dnasequence.h"
+#include "StatusDna.h"
 class Dna {
 public:
     Dna(const std::string&  name, const std::string&  status, const Dnasequence& dnasequence);
     static size_t getId();
      std::string getName();
-    inline Dnasequence getDna();
+     Dnasequence getDna();
 
 private:
     Dnasequence m_Dna;
     std::string m_name;
-    std::string m_status;
+    StatusDna m_status;
     static size_t m_id;
 
 };
