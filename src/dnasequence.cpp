@@ -264,9 +264,9 @@ bool Dnasequence::Nucleotied::isValideChar(char c){
 ////reader//////
 Dnasequence::Dnasequence(const Ireader& obj)
 {
-    if(isValid(obj.read().c_str()))
+    if(isValid(obj.get().c_str()))
     {
-        m_lenCstringDna = obj.read().length();
-        this->init(obj.read().c_str());
+        m_lenCstringDna = obj.get().length();
+        this->init(obj.get().c_str());
     }
 }
