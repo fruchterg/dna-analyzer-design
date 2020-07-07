@@ -11,10 +11,12 @@
 #include "NameDna.h"
 #include "StatusDna.h"
 class dataDNA {
-
 public:
-    static std::map<size_t ,Dna*>& getIdDNA();
-    static std::map<std::string ,size_t>& getNameDNA();
+    void addDna( Dna* newDna);
+     std::map<size_t ,Dna*>& getMap();
+private:
+     std::map<size_t ,Dna*> m_mapIdDna;
+     std::map<std::string ,size_t> m_mapNameDna;
 
 
 };
