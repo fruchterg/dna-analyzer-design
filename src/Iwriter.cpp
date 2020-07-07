@@ -6,19 +6,6 @@
 #include <iostream>
 #include <fstream>
 
-Filewriter::Filewriter(std::string data)
-{
-        m_data = data;
-}
-
-
-void Filewriter::write(std::string data)const{
-    std::ofstream myfile;
-    myfile.open(m_data.c_str());
-    myfile << data;
-    myfile.close();
-}
-
 
 void Consolewriter::write( std::string data)const
 {
