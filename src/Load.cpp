@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <sstream>
 #include "Load.h"
-#include "rawdna.h"
+#include "rawDnaReader.h"
 
 bool Load::isValid(const Paramcommand& obj)
 {
@@ -22,7 +22,7 @@ Load::Load(const Paramcommand& param)
 
 void Load::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& param)
 {
-    rawdna myfile(param.getParam()[1]);
+    rawDnaReader myfile(param.getParam()[1]);
     myfile.read();
     std::string dnaName;
 
