@@ -8,7 +8,7 @@
 
 class Ireader{
 public:
-    virtual void read()const=0 ;
+    virtual void read()=0 ;
 
 
 };
