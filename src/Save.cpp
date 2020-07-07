@@ -4,7 +4,6 @@
 
 #include <sstream>
 #include "Save.h"
-#include "rawDnaReader.h"
 #include "rawDnaWriter.h"
 
 Save::Save(const Paramcommand& obj)
