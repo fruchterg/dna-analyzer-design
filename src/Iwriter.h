@@ -25,12 +25,8 @@ protected:
 
 class Filewriter:public Datawriter{
 
-public:
-    Filewriter(std::string data);
-    void write(std::string data)const;
-
-
 };
+
 
 class Consolewriter:public Datawriter{
 
