@@ -10,8 +10,9 @@
 #include <string>
 
 class Icommand{
+
 public:
-     virtual std::string run(const Paramcommand& obj) = 0;
+     virtual void run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& obj) = 0;
 
 };
 
@@ -23,10 +24,11 @@ class New:public Icreate{
 
 public:
     New(const Paramcommand& obj);
-    std::string run(const Paramcommand& obj);
+    void run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& obj);
 
 private:
    bool isValid(const Paramcommand& obj);
+   void print(const Iwriter& writer, dataDNA& containerDna);
 
 };
 
