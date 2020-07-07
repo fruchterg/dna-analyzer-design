@@ -4,6 +4,7 @@
 
 #include <fstream>
 #include "rawDnaWriter.h"
+
 rawDnaWriter::rawDnaWriter(const std::string& data)
 {
     m_data = data;
