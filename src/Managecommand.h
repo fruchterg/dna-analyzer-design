@@ -7,6 +7,8 @@
 
 #include "Icommand.h"
 #include "Load.h"
+#include "Dup.h"
+#include "Save.h"
 class Managecommand{
 
 public:
