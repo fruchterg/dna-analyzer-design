@@ -7,7 +7,6 @@
 #include "Load.h"
 #include "rawdna.h"
 
-
 bool Load::isValid(const Paramcommand& obj)
 {
     return true;
@@ -21,9 +20,10 @@ Load::Load(const Paramcommand& param)
 }
 
 
-std::string Load::run(const Paramcommand&param)
+void Load::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& param)
 {
-    rawdna myfile(param.getParam()[1].c_str());
+    rawdna myfile(param.getParam()[1]);
+    myfile.read();
     std::string dnaName;
 
     if(param.getParam().size()<3)
@@ -37,34 +37,32 @@ std::string Load::run(const Paramcommand&param)
     }
 
     Dna* newdna = new Dna(dnaName,"new",myfile);
-    dataDNA::getIdDNA().insert(std::pair<size_t, Dna*>(Dna::getId(),newdna));
-    dataDNA::getNameDNA().insert(std::pair<std::string, size_t>(dnaName, Dna::getId()));
-
-
-    return print();
+    containerDna.addDna(newdna);
+    print(writer,containerDna);
 
 }
 
 
-std::string Load::print()const
+void Load::print(const Iwriter& writer, dataDNA& containerDna)const
 {
 
     std::stringstream temp;
-    temp<<dataDNA::getIdDNA()[Dna::getId()]->getId();
+    temp<<containerDna.getMap()[Dna::getId()]->getId();
     std::string strId =temp.str();
 
-    if(dataDNA::getIdDNA()[Dna::getId()]->getDna().length()<40)
+
+
+    if(containerDna.getMap()[Dna::getId()]->getDna().length()<40)
     {
-        return "[" + strId + "]" + dataDNA::getIdDNA()[Dna::getId()]->getName() + ":" +
-                dataDNA::getIdDNA()[Dna::getId()]->getDna().getAsChar();
+        writer.write("[" + strId + "]" + containerDna.getMap()[Dna::getId()]->getName() + ":" +
+                             containerDna.getMap()[Dna::getId()]->getDna().getAsChar());
     }
     else
     {
-        std::string lastDnasequence= (dataDNA::getIdDNA()[Dna::getId()]->getDna()).getAsChar()+dataDNA::getIdDNA()[Dna::getId()]->getDna().length()-3;
-        std::string firstDnasequence(dataDNA::getIdDNA()[Dna::getId()]->getDna().getAsChar());
+        std::string lastDnasequence= (containerDna.getMap()[Dna::getId()]->getDna()).getAsChar()+containerDna.getMap()[Dna::getId()]->getDna().length()-3;
+        std::string firstDnasequence(containerDna.getMap()[Dna::getId()]->getDna().getAsChar());
         firstDnasequence = firstDnasequence.substr(0,32);
-
-        return "[" + strId + "]" + dataDNA::getIdDNA()[Dna::getId()]->getName() + ":" + firstDnasequence+"..."+lastDnasequence;
+        writer.write("[" + strId + "]" + containerDna.getMap()[Dna::getId()]->getName() + ":" + firstDnasequence+"..."+lastDnasequence);
 
     }
 
