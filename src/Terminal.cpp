@@ -11,7 +11,13 @@ void Terminal::start(const Iwriter& writer,Ireader& reader,dataDNA &containerDna
     while (1) {
         reader.read();
         Paramcommand parameter(reader.get());
-        Icommand *command = Managecommand::createcommand(parameter);
-        command->run(writer,containerDna, parameter);
+        try{
+            Icommand *command = Managecommand::createcommand(parameter);
+            command->run(writer,containerDna, parameter);
+        }
+        catch(std::invalid_argument& e)
+        {
+            std::cout<<e.what()<<std::endl;
+        }
     }
 }
