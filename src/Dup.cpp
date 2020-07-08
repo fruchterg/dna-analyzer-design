@@ -13,9 +13,9 @@ Dup::Dup(const Paramcommand& obj)
     }
 
 }
-bool Dup::isValid(const Paramcommand& obj)
+bool Dup::isValid(const Paramcommand& param)
 {
-    return true;
+    return ((2==param.getParam().size()||(param.getParam().size()==3&&(param.getParam()[2][0]=='@')))&&param.getParam()[1][0]=='#');
 }
 
 void Dup::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& param)
@@ -23,24 +23,32 @@ void Dup::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& p
     static size_t countId=1;
     std::string dnaName;
     std::stringstream temp2;
+    std::stringstream temp;
 
     std::string string = param.getParam()[1].substr(1);
     std::stringstream temp1(string);
     size_t idDna;
     temp1>> idDna;
 
+    if(!containerDna.isexistId(idDna))
+    {
+        std::cout<<"id of DNA not found";
+        return;
+    }
     if(param.getParam().size()<3)
-    {
-        temp2<<countId++;
-        dnaName =containerDna.find(idDna)->getName()+"_"+temp2.str();
+     {
 
-    }
-    else
-    {
-        dnaName = param.getParam()[2];
-    }
+        temp2<<containerDna.findInIdMap(idDna)->getCountName();
+        containerDna.findInIdMap(idDna)->setCountName();
+        dnaName =containerDna.findInIdMap(idDna)->getName()+"_"+temp2.str();
+     }
+     else
+     {
+            dnaName = param.getParam()[2].substr(1);;
+     }
 
-    Dna* newdna = new Dna(dnaName, "new",containerDna.find(idDna)->getDna());
+
+    Dna* newdna = new Dna(dnaName, "new",containerDna.findInIdMap(idDna)->getDna());
     containerDna.addDna(newdna);
     print(writer,containerDna);
 
@@ -49,9 +57,9 @@ void Dup::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& p
 void Dup::print(const Iwriter& writer, dataDNA& containerDna)
 {
     std::stringstream temp1;
-    temp1<<containerDna.getMap()[Dna::getId()]->getId();
+    temp1<<containerDna.findInIdMap(Dna::getId())->getId();
     std::string strId1 =temp1.str();
 
-    writer.write("[" +strId1+ "]"+ containerDna.find(Dna::getId())->getName()+":"+containerDna.find(Dna::getId())->getDna().getAsChar());
+    writer.write("[" +strId1+ "]"+ containerDna.findInIdMap(Dna::getId())->getName()+":"+containerDna.findInIdMap(Dna::getId())->getDna().getAsChar());
 
 }
