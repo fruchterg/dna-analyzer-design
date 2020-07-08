@@ -4,6 +4,7 @@
 
 #include <sstream>
 #include "Dup.h"
+#include "Auxiliaryfunctions.h"
 Dup::Dup(const Paramcommand& obj)
 {
     if(!isValid(obj))
@@ -35,18 +36,31 @@ void Dup::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& p
         std::cout<<"id of DNA not found";
         return;
     }
+
     if(param.getParam().size()<3)
      {
 
-        temp2<<containerDna.findInIdMap(idDna)->getCountName();
+        dnaName = containerDna.findInIdMap(idDna)->getName()+"_"+castToSize(containerDna.findInIdMap(idDna)->getCountName());
         containerDna.findInIdMap(idDna)->setCountName();
-        dnaName =containerDna.findInIdMap(idDna)->getName()+"_"+temp2.str();
+        while(containerDna.isexistName(dnaName))
+        {
+            dnaName = containerDna.findInIdMap(idDna)->getName()+"_"+castToSize(containerDna.findInIdMap(idDna)->getCountName());
+            containerDna.findInIdMap(idDna)->setCountName();
+        }
+        /*temp2<<
+        containerDna.findInIdMap(idDna)->setCountName();
+        dnaName =containerDna.findInIdMap(idDna)->getName()+"_"+temp2.str();*/
      }
      else
      {
             dnaName = param.getParam()[2].substr(1);;
      }
-
+      if(containerDna.isexistName(dnaName))
+        {
+             //std::cout<<"This name already Exists"<<std::endl;
+             writer.write("This name already Exists");
+             return;
+        }
 
     Dna* newdna = new Dna(dnaName, "new",containerDna.findInIdMap(idDna)->getDna());
     containerDna.addDna(newdna);
