@@ -19,7 +19,8 @@ New::New(const Paramcommand& paramlist)
 
 bool New::isValid(const Paramcommand& param)
 {
-    return true;
+    return ((2==param.getParam().size()||(param.getParam().size()==3&&(param.getParam()[2][0]=='@'))));
+
 }
 
 
@@ -27,6 +28,8 @@ void New::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& p
 {
     static size_t countId=1;
     std::stringstream temp;
+    std::stringstream temp1;
+
     std::string dnaName;
 
 
@@ -38,8 +41,16 @@ void New::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& p
     }
     else
     {
-        dnaName = param.getParam()[2];
+        dnaName = param.getParam()[2].substr(1);;
     }
+
+    if(containerDna.isexistName(dnaName))
+    {
+        temp1<<containerDna.findInNameMap(dnaName)->getCountName();
+        containerDna.findInNameMap(dnaName)->setCountName();
+        dnaName = dnaName+"_"+temp1.str();
+    }
+
     Dna* newdna = new Dna(dnaName, "new",param.getParam()[1]);
     containerDna.addDna(newdna);
    // dataDNA::getIdDNA().insert(std::pair<size_t, Dna*>(Dna::getId(),d));
@@ -50,9 +61,9 @@ void New::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& p
 void New::print(const Iwriter& writer, dataDNA& containerDna)
 {
     std::stringstream temp1;
-    temp1<<containerDna.getMap()[Dna::getId()]->getId();
+    temp1<<containerDna.findInIdMap(Dna::getId())->getId();
     std::string strId1 =temp1.str();
-    writer.write("[" +strId1+ "]"+ containerDna.getMap()[Dna::getId()]->getName()+":"+containerDna.getMap()[Dna::getId()]->getDna().getAsChar());
+    writer.write("[" +strId1+ "]"+ containerDna.findInIdMap(Dna::getId())->getName()+":"+containerDna.findInIdMap(Dna::getId())->getDna().getAsChar());
 
 }
 
