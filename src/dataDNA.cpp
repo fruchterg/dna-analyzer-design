@@ -22,16 +22,34 @@ void dataDNA::addDna(Dna* newDna)
 
 }
 
-std::map<size_t ,Dna*>& dataDNA::getMap()
+/*std::map<size_t ,Dna*>& dataDNA::getMap()
 {
     return m_mapIdDna;
-}
+}*/
 
-Dna*dataDNA::find(size_t id)
+Dna*dataDNA::findInIdMap(size_t id)
 {
     return m_mapIdDna[id];
 }
 
+
+Dna*dataDNA::findInNameMap(const std::string& name)
+{
+    return m_mapIdDna[m_mapNameDna[name]];
+}
+
+
+bool dataDNA::isexistName(const std::string& name)
+{
+    return m_mapNameDna.find(name)!=m_mapNameDna.end();
+
+}
+
+bool dataDNA::isexistId(size_t id)
+{
+    return m_mapIdDna.find(id)!=m_mapIdDna.end();
+
+}
 
 
 /*std::map<StatusDna,Dna&> dataDNA::getStatusDNA()
