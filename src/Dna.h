@@ -12,28 +12,35 @@
 class Dna {
 public:
     Dna(const std::string&  name, const std::string&  status, const Dnasequence& dnasequence);
-    static size_t getId();
-     std::string getName();
-     Dnasequence getDna();
+    const static size_t getId();
+    const std::string& getName();
+    const Dnasequence& getDna();
+    const size_t getCountName()const;
+    size_t setCountName();
 
 private:
-    Dnasequence m_Dna;
+    Dnasequence* m_Dna;
     std::string m_name;
     StatusDna m_status;
     static size_t m_id;
+    size_t m_countName;
 
 };
-inline size_t Dna::getId()
+inline const size_t Dna::getId()
 {
     return m_id;
 }
-inline std::string Dna::getName()
+inline const std::string& Dna::getName()
 {
     return m_name;
 }
-inline Dnasequence Dna::getDna()
+inline const Dnasequence& Dna::getDna()
 {
-    return m_Dna;
+    return *m_Dna;
+}
+inline const size_t Dna::getCountName()const
+{
+    return m_countName;
 }
 
 #endif //DNDSEQUENCE_DNA_H
