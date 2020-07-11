@@ -6,6 +6,7 @@
 #define DNDSEQUENCE_SAVE_H
 
 #include "ImanageDna.h"
+#include "rawDnaWriter.h"
 
 class Save: public ImanageDna{
 
@@ -16,6 +17,9 @@ public:
 private:
     bool isValid(const Paramcommand& obj);
     //void print(const Iwriter& writer, dataDNA& containerDna);
+    std::string saveById(dataDNA& containerDna,const Paramcommand&param);
+    std::string saveByName(dataDNA& containerDna, const Paramcommand&param);
+
 
 };
 
