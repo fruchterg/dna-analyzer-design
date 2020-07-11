@@ -4,8 +4,7 @@
 
 #include <sstream>
 #include "Save.h"
-#include "rawDnaWriter.h"
-
+#include "Auxiliaryfunctions.h"
 Save::Save(const Paramcommand& obj)
 {
 
@@ -13,36 +12,74 @@ Save::Save(const Paramcommand& obj)
             throw std::invalid_argument("command not found");
 
 }
+
 bool Save::isValid(const Paramcommand& param)
 {
-    return ((2==param.getParam().size()||(param.getParam().size()==3&&(param.getParam()[2][0]=='@')))&&param.getParam()[1][0]=='#');
+    return ((2==param.getParam().size()||(param.getParam().size()==3&&(param.getParam()[2][0]=='@')))&&(param.getParam()[1][0]=='#'||param.getParam()[1][0]=='@'));
 }
+
+std::string Save::saveById(dataDNA& containerDna, const Paramcommand&param)
+{
+    std::string fileDnaName;
+    std::string string = param.getParam()[1].substr(1);
+    size_t idDna = castToSize(string);
+    if(param.getParam().size()<3)
+    {
+        fileDnaName = containerDna.findInIdMap(idDna)->getName()+".rawdna";
+    }
+    else
+    {
+        fileDnaName = param.getParam()[2].substr(1)+".rawdna";
+    }
+
+        return fileDnaName;
+
+}
+
+
+std::string Save::saveByName(dataDNA& containerDna, const Paramcommand&param)
+{
+    std::string fileDnaName;
+    if(param.getParam().size()<3)
+    {
+        fileDnaName = containerDna.findInNameMap(param.getParam()[1].substr(1))->getName()+".rawdna";
+    }
+    else
+    {
+        fileDnaName = param.getParam()[2].substr(1)+".rawdna";
+    }
+    return fileDnaName;
+
+}
+
+
+
 void Save::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& param)
 {
     std::string fileDnaName;
 
     std::string string = param.getParam()[1].substr(1);
-    std::stringstream temp(string);
-    size_t idDna;
-    temp>> idDna;
-
-    if(!containerDna.isexistId(idDna))
+    if(param.getParam()[1][0]=='@')
     {
-        std::cout<<"id of DNA not found";
-        return;
+        if(!containerDna.isexistName(param.getParam()[1].substr(1)))
+        {
+            std::cout<<"name of DNA not found";
+            return;
+        }
+        rawDnaWriter myfile(saveByName(containerDna,param));
+        myfile.write(containerDna.findInNameMap(string)->getDna().getAsChar());
     }
-    if(param.getParam().size()<3)
-    {
 
-        fileDnaName =containerDna.findInIdMap(idDna)->getName();
 
-    }
     else
     {
-        fileDnaName = param.getParam()[2].substr(1);;
+        if(!containerDna.isexistId(castToSize(param.getParam()[1].substr(1))))
+        {
+            std::cout<<"id of DNA not found";
+            return;
+        }
+        rawDnaWriter myfile(saveById(containerDna,param));
+        myfile.write(containerDna.findInIdMap(castToSize(string))->getDna().getAsChar());
     }
-
-    rawDnaWriter myfile(fileDnaName);
-    myfile.write(containerDna.findInIdMap(idDna)->getDna().getAsChar());
 
 }
