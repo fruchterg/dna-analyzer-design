@@ -6,8 +6,8 @@
 #define DNDSEQUENCE_SYSTEM_H
 
 
-#include "Iwriter.h"
-#include "Ireader.h"
+#include "View/Iwriter.h"
+#include "View/Ireader.h"
 
 class System {
 

@@ -5,7 +5,7 @@
 #ifndef DNDSEQUENCE_MANAGEDNA_H
 #define DNDSEQUENCE_MANAGEDNA_H
 
-#include "Icommand.h"
+#include "Controller/Icommand.h"
 class ImanageDna: public Icommand {
 
 };

@@ -3,9 +3,9 @@
 //
 
 #include "System.h"
-#include "Iwriter.h"
-#include "Ireader.h"
-#include "dataDNA.h"
+#include "View/Iwriter.h"
+#include "View/Ireader.h"
+#include "Model/dataDNA.h"
 #include "Terminal.h"
 void System::start(const Iwriter& writer, Ireader& reader)
 {

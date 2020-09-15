@@ -5,10 +5,10 @@
 #ifndef DNDSEQUENCE_MANAGECOMMAND_H
 #define DNDSEQUENCE_MANAGECOMMAND_H
 
-#include "Icommand.h"
-#include "Load.h"
-#include "Dup.h"
-#include "Save.h"
+#include "Controller/Icommand.h"
+#include "Controller/Commands/Load.h"
+#include "Controller/Commands/Dup.h"
+#include "Controller/Commands/Save.h"
 class Managecommand{
 
 public:

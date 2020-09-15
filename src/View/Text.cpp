@@ -2,16 +2,14 @@
 // Created by a on 7/6/20.
 //
 
-#include <string>
-#include "rawdna.h"
+#include <fstream>
+#include "Text.h"
 ////////files/////////
 
-
-rawdna::rawdna(const char *name_file){
+Text::Text(const char* name_file){
     std::ifstream myfile(name_file);
     if(myfile.is_open())
     {
-
         getline(myfile,m_data);
     }
     else{
@@ -20,8 +18,9 @@ rawdna::rawdna(const char *name_file){
     myfile.close();
 }
 
-std::string rawdna::read()const
+std::string Text::read()const
 {
     return m_data;
 
 }
+

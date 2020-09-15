@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <sstream>
 #include "Load.h"
-#include "View/rawDnaReader.h"
+#include "rawDnaReader.h"
 #include "Auxiliaryfunctions.h"
 bool Load::isValid(const Paramcommand& param)
 {
