@@ -6,7 +6,7 @@
 #define DNDSEQUENCE_SAVE_H
 
 #include "ImanageDna.h"
-#include "rawDnaWriter.h"
+#include "View/rawDnaWriter.h"
 
 class Save: public ImanageDna{
 

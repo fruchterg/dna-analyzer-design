@@ -11,8 +11,8 @@
 #include <vector>
 #include "list"
 #include <fstream>
-#include "Ireader.h"
-#include "Iwriter.h"
+#include "View/Ireader.h"
+#include "View/Iwriter.h"
 
 class Dnasequence {
 

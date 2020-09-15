@@ -5,7 +5,7 @@
 #ifndef DNDSEQUENCE_DUP_H
 #define DNDSEQUENCE_DUP_H
 
-#include "Icommand.h"
+#include "Controller/Icommand.h"
 
 class Dup:public Icommand {
 public:
