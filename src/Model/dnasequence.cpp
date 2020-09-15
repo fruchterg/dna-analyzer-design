@@ -119,7 +119,7 @@ Dnasequence::Nucleotied&  Dnasequence::operator[](size_t index)const {
         throw std::invalid_argument("index not valide");
     return m_cstringDna[index];
 }
-Dnasequence Dnasequence::slice(size_t start, size_t last)
+Dnasequence Dnasequence::slice(size_t start, size_t last)const
 {
     size_t j,i;
 

@@ -4,16 +4,17 @@
 
 #include <sstream>
 #include "Dup.h"
-#include "Auxiliaryfunctions.h"
-Dup::Dup(const Paramcommand& obj)
-{
-    if(!isValid(obj))
-    {
-        throw std::invalid_argument("command not found");
+#include "../Auxiliaryfunctions.h"
+//Dup::Dup(const Paramcommand& obj)
+//{
+//    if(!isValid(obj))
+//    {
+//        throw std::invalid_argument("command not found");
+//
+//    }
+//
+//}
 
-    }
-
-}
 bool Dup::isValid(const Paramcommand& param)
 {
     return ((2==param.getParam().size()||(param.getParam().size()==3&&(param.getParam()[2][0]=='@')))&&(param.getParam()[1][0]=='#'||param.getParam()[1][0]=='@'));
@@ -65,6 +66,11 @@ Dna* Dup::dupById(dataDNA&containerDna, const Paramcommand&param)
 
 void Dup::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& param)
 {
+    if(!isValid(param))
+    {
+        throw std::invalid_argument("command not found");
+
+    }
     std::string dnaName;
     std::string string = param.getParam()[1].substr(1);
     size_t idDna = castToSize(string);

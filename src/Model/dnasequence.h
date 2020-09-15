@@ -11,8 +11,8 @@
 #include <vector>
 #include "list"
 #include <fstream>
-#include "View/Ireader.h"
-#include "View/Iwriter.h"
+#include "../View/Ireader.h"
+#include "../View/Iwriter.h"
 
 class Dnasequence {
 
@@ -76,7 +76,7 @@ public:
 
     const char* getAsChar()const;
 
-    Dnasequence slice(size_t , size_t);
+    Dnasequence slice(size_t , size_t)const ;
 
     Dnasequence pairingDna();
 

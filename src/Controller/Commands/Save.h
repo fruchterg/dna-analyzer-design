@@ -5,13 +5,14 @@
 #ifndef DNDSEQUENCE_SAVE_H
 #define DNDSEQUENCE_SAVE_H
 
-#include "ImanageDna.h"
-#include "View/rawDnaWriter.h"
+#include "../ImanageDna.h"
+#include "../../View/rawDnaWriter.h"
 
 class Save: public ImanageDna{
 
 public:
-    Save(const Paramcommand& obj);
+    /*virtual*/~Save(){}
+//    Save(const Paramcommand& obj);
     void run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& obj);
 
 private:

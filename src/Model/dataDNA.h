@@ -12,10 +12,12 @@
 #include "StatusDna.h"
 class dataDNA {
 public:
+    ~dataDNA();
     void addDna(Dna* newDna);
      //std::map<size_t ,Dna*>& getMap();
      Dna*findInIdMap(size_t);
     Dna*findInNameMap(const std::string& name);
+    size_t findIdByName(const std::string& name);
     bool isexistId(size_t);
     bool isexistName(const std::string& name);
 private:

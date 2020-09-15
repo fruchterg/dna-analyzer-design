@@ -1,21 +1,9 @@
 //
-// Created by a on 7/5/20.
+// Created by a on 9/14/20.
 //
 
-#include <stdexcept>
-#include <sstream>
-#include "Icommand.h"
-#include "Model/dataDNA.h"
-#include "Auxiliaryfunctions.h"
-
-New::New(const Paramcommand& paramlist)
-{
-    if(!isValid(paramlist))
-        throw std::invalid_argument("command not found");
-
-
-}
-
+#include "New.h"
+#include "../Auxiliaryfunctions.h"
 
 bool New::isValid(const Paramcommand& param)
 {
@@ -26,6 +14,8 @@ bool New::isValid(const Paramcommand& param)
 
 void New::run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& param)
 {
+    if(!isValid(param))
+        throw std::invalid_argument("command not found");
     static size_t countId=0;
 
     std::string dnaName;
@@ -63,4 +53,3 @@ void New::print(const Iwriter& writer, dataDNA& containerDna)
     writer.write("[" +strId+ "]"+ containerDna.findInIdMap(Dna::getId())->getName()+":"+containerDna.findInIdMap(Dna::getId())->getDna().getAsChar());
 
 }
-

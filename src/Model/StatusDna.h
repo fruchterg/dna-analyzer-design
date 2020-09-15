@@ -8,14 +8,15 @@
 
 #include <string>
 #include <list>
+#include <vector>
+
 class StatusDna {
 public:
     StatusDna(const std::string& status);
-
+    void setStatus(const std::string& status, size_t id);
 private:
     std::string m_status;
-    std::list<std::string> m_statuslist;
-
+    static std::vector<std::string> m_statuslist;
 };
 
 

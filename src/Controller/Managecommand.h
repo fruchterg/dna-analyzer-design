@@ -5,14 +5,23 @@
 #ifndef DNDSEQUENCE_MANAGECOMMAND_H
 #define DNDSEQUENCE_MANAGECOMMAND_H
 
-#include "Controller/Icommand.h"
-#include "Controller/Commands/Load.h"
-#include "Controller/Commands/Dup.h"
-#include "Controller/Commands/Save.h"
+#include "Commands/Icommand.h"
+#include "Commands/Load.h"
+#include "Commands/Dup.h"
+#include "Commands/Save.h"
+#include "Commands/New.h"
+#include "Commands/Slice.h"
+
+
 class Managecommand{
 
 public:
-     static Icommand* createcommand(const Paramcommand& param);
+     Managecommand();
+     ~Managecommand();
+     Icommand* createcommand(const std::string& command);
+
+private:
+     std::map<std::string, Icommand*> m_mapCommand;
 };
 
 

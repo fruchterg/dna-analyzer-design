@@ -5,31 +5,27 @@
 #ifndef DNDSEQUENCE_ICOMMAND_H
 #define DNDSEQUENCE_ICOMMAND_H
 
-#include "Paramcommand.h"
-#include "Model/dataDNA.h"
+#include "../Paramcommand.h"
+#include "../../Model/dataDNA.h"
 #include <string>
 
 class Icommand{
 
 public:
-     virtual void run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& obj) = 0;
+    virtual ~Icommand(){};
+    virtual void run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& obj) = 0;
 
 };
 
 class Icreate:public Icommand{
-
+public:
+    virtual ~Icreate(){};
 };
 
-class New:public Icreate{
 
+class Ichange:public Icommand{
 public:
-    New(const Paramcommand& obj);
-    void run(const Iwriter& writer, dataDNA& containerDna,const Paramcommand& obj);
-
-private:
-   bool isValid(const Paramcommand& obj);
-   void print(const Iwriter& writer, dataDNA& containerDna);
-
+    virtual ~Ichange(){};
 };
 
 

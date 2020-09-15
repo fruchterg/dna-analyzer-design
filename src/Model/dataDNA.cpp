@@ -1,7 +1,6 @@
 //
 // Created by a on 7/5/20.
 //
-
 #include "dataDNA.h"
 /*std::map<size_t ,Dna*>& dataDNA::getIdDNA()
 {
@@ -21,6 +20,16 @@ void dataDNA::addDna(Dna* newDna)
     m_mapNameDna.insert(std::pair<std::string, size_t>(newDna->getName(), Dna::getId()));
 
 }
+
+dataDNA::~dataDNA()
+{
+    std::map<size_t, Dna*>::iterator iter;
+    for(iter = m_mapIdDna.begin();iter!=m_mapIdDna.end();++iter)
+    {
+        delete iter->second;
+    }
+}
+
 
 /*std::map<size_t ,Dna*>& dataDNA::getMap()
 {
@@ -57,3 +66,9 @@ bool dataDNA::isexistId(size_t id)
     static std::map<StatusDna,Dna&> m_mStatus;
     return m_mStatus;
 }*/
+
+
+size_t dataDNA::findIdByName(const std::string& name)
+{
+    return m_mapNameDna[name];
+}

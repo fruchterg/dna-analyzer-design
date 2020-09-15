@@ -6,13 +6,14 @@
 #define DNDSEQUENCE_LOAD_H
 
 
-#include "Paramcommand.h"
-#include "Controller/Icommand.h"
+#include "../Paramcommand.h"
+#include "Icommand.h"
 class Load:public Icreate {
 
 public:
 
-    Load(const Paramcommand& param);
+//    Load(const Paramcommand& param);
+    /*virtual*/~Load(){}
     void run(const Iwriter& writer,dataDNA& containerDna,const Paramcommand& obj);
 
 private:

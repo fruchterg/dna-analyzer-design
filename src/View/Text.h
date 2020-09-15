@@ -5,7 +5,7 @@
 #ifndef DNDSEQUENCE_TEXT_H
 #define DNDSEQUENCE_TEXT_H
 
-#include "Controller/Icommand.h"
+#include "../Controller/Commands/Icommand.h"
 
 class Text: public Filereader {
 public:

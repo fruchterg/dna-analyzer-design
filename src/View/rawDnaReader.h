@@ -5,7 +5,7 @@
 #ifndef DNDSEQUENCE_RAWDNAREADER_H
 #define DNDSEQUENCE_RAWDNAREADER_H
 
-#include "Controller/Icommand.h"
+#include "../Controller/Commands/Icommand.h"
 
 class rawDnaReader: public Filereader {
 

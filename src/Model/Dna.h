@@ -12,12 +12,14 @@
 class Dna {
 public:
     Dna(const std::string&  name, const std::string&  status, const Dnasequence& dnasequence);
+    ~Dna();
     const static size_t getId();
     const std::string& getName();
     const Dnasequence& getDna();
     const size_t getCountName()const;
     size_t setCountName();
-
+    StatusDna getStatus();
+    void setDnaSequence(const Dnasequence& dnasequence);
 private:
     Dnasequence* m_Dna;
     std::string m_name;
