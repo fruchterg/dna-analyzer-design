@@ -7,8 +7,6 @@
 
 #include <map>
 #include "Dna.h"
-#include "IdDna.h"
-#include "NameDna.h"
 #include "StatusDna.h"
 class dataDNA {
 public:

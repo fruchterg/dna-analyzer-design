@@ -8,6 +8,7 @@
 #include "../Model/dataDNA.h"
 #include "../View/Terminal.h"
 #include "stdlib.h"
+
 void System::start(const Iwriter& writer, Ireader& reader,UserInterface* UI)
 {
     dataDNA containerDna;
