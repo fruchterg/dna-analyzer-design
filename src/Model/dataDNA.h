@@ -12,12 +12,14 @@ class dataDNA {
 public:
     ~dataDNA();
     void addDna(Dna* newDna);
+    void delDna(size_t id);
      //std::map<size_t ,Dna*>& getMap();
      Dna*findInIdMap(size_t);
     Dna*findInNameMap(const std::string& name);
     size_t findIdByName(const std::string& name);
     bool isexistId(size_t);
     bool isexistName(const std::string& name);
+    void setName(size_t id, const std::string& newName);
 private:
      std::map<size_t ,Dna*> m_mapIdDna;
      std::map<std::string ,size_t> m_mapNameDna;
