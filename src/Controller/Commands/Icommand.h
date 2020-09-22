@@ -13,7 +13,7 @@ class Icommand{
 
 public:
     virtual ~Icommand(){};
-    virtual void run(const Iwriter& writer,Ireader& reader, dataDNA& containerDna,const Paramcommand& obj) = 0;
+    virtual std::string run(Iwriter &writer, Ireader& reader, dataDNA& containerDna, const Paramcommand& obj) = 0;
 
 };
 
@@ -34,8 +34,12 @@ protected:
 class SequenceAnalysis:public Icommand {
 public:
     virtual ~SequenceAnalysis(){};
-protected:
-    std::string getName(size_t idDna, const std::string& suffix, dataDNA& containerDna, const std::string& paramater);
+};
+
+
+class ControlCommands:public Icommand{
+public:
+    virtual ~ControlCommands(){};
 };
 
 #endif //DNDSEQUENCE_ICOMMAND_H

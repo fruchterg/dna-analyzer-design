@@ -20,6 +20,10 @@ void StatusDna::setStatus(const std::string& status, size_t id)
 //    }
 }
 
+std::vector<std::string>& StatusDna::getListStatus()
+{
+    return m_statuslist;
+}
 
 
 
