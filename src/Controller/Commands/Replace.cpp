@@ -5,10 +5,9 @@
 Dnasequence Replace::replace(const std::vector<std::string>& param,size_t lastIndex,dataDNA& containerDna,size_t idDna)
 {
     Dnasequence newDnaseq(containerDna.findInIdMap(idDna)->getDna());
-
     for(size_t index = 2; index < lastIndex;index += 2)
     {
-        newDnaseq.getAsCharNonConst()[castToSize(param[index])] = param[index+1][0];
+        newDnaseq[castToSize(param[index])] = param[index+1][0];
     }
 
     return newDnaseq;
@@ -63,6 +62,7 @@ std::string Replace::run(Iwriter &writer, Ireader& reader, dataDNA& containerDna
     }
     else
     {
+
         NewdnaName = getName(idDna, "_r", containerDna, param.getParam()[index+1]);
         if(NewdnaName.empty())
         {

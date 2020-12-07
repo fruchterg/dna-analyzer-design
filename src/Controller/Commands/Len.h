@@ -1,7 +1,7 @@
 #ifndef DNA_ANALYZER_PROJECT_LEN_H
 #define DNA_ANALYZER_PROJECT_LEN_H
-#include "../ImanageDna.h"
-#include "../../View/rawDnaWriter.h"
+#include "Icommand.h"
+//#include "../../View/rawDnaWriter.h"
 
 
 class Len: public ImanageDna

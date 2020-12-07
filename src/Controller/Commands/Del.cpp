@@ -19,6 +19,7 @@ std::string Del::deleteDna(dataDNA& containerDna,size_t idDna,Ireader& reader,Iw
         if (result == "Y" || result == "y")
         {
             output = print(writer, containerDna, idDna);
+            containerDna.findInIdMap(idDna)->getStatus().setStatus("", idDna);
             containerDna.delDna(idDna);
             return output;
         }
